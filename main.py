@@ -19,21 +19,20 @@ stdio_server_params = StdioServerParameters(
 )
 
 
-
 async def main():
     async with stdio_client(stdio_server_params) as (read, write):
         async with ClientSession(read_stream=read, write_stream=write) as session:
             await session.initialize()
-            print ("session initialized")
+            print("session initialized")
             print("Hello from mcp-crash-course!")
             tools = await load_mcp_tools(session)
-            #print(tools)
+            # print(tools)
 
             agent = create_react_agent(llm, tools)
-            result = await agent.ainvoke({"messages": [HumanMessage(content="What is 53 + 4 * 23?")]})
+            result = await agent.ainvoke(
+                {"messages": [HumanMessage(content="What is 53 + 4 * 23?")]}
+            )
             print(result["messages"][-1].content)
-
-
 
 
 if __name__ == "__main__":
