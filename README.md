@@ -1,4 +1,4 @@
-# MCP Crash Course
+# MCP  - Langchain 
 
 A learning project demonstrating the **Model Context Protocol (MCP)** with multiple server implementations and a LangChain client integration.
 
